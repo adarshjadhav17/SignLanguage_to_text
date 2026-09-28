@@ -134,29 +134,6 @@ Open [http://127.0.0.1:5000](http://127.0.0.1:5000). Allow the Python process ac
 
 The application runs Flask in debug mode and is intended for local experimentation.
 
-## Limitations and troubleshooting
-
-- **Missing templates or styling:** complete the folder preparation step above. The checked-in layout alone will not satisfy Flask's default template lookup.
-- **Dependency installation errors:** the legacy pins may lack wheels for your platform. `wincertstore` is Windows-specific, and both OpenCV distributions are listed. Reproducing the original environment or updating and testing the dependency set may be necessary.
-- **Camera errors:** check camera permissions and close other applications using the webcam. The code uses camera index `0` and does not handle failed frame reads gracefully.
-- **Camera initialization:** a detector is created at import time and again for the video endpoint; Flask's debug reloader can also repeat initialization. Camera lifecycle handling needs improvement.
-- **Recognition stability:** the rules depend on hand orientation and image coordinates. Multiple conditions can match one frame, and there is no confidence threshold or temporal smoothing.
-- **Image processing:** frames are passed to MediaPipe without an explicit BGR-to-RGB conversion. This should be addressed and evaluated in a future code update.
-- **Output scope:** labels are drawn into video frames. There is no separate transcript, word assembly, sentence translation, or text-to-speech integration.
-- **Evaluation:** the repository includes no automated test suite or reproducible accuracy, latency, or signer-diversity benchmark. The README setup has been checked against the source, but the legacy application has not been runtime-tested as part of this documentation update.
-
-## Potential future directions
-
-Building on the system described in the paper, possible extensions include:
-
-- Synchronize the repository with the team's later implementation, including speech output, and document a reproducible environment.
-- Expand gesture coverage and evaluate motion-based signs, handedness, and continuous sequences.
-- Add a transcript with spacing, correction, and user-controlled speech playback.
-- Improve recognition stability across lighting, backgrounds, hand orientations, and users.
-- Improve accessibility through evaluation with Deaf and hard-of-hearing users and ASL signers.
-- Add automated tests and publish measured recognition accuracy, latency, and evaluation methodology.
-
-These are potential directions, not a claim that the paper commits to a particular development schedule.
 
 ## Original project team
 
